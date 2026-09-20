@@ -8,9 +8,9 @@ const errorMessages = {
         switchError: 'Unable to switch languages. Please try again.'
     },
     'es-MX': {
-        languageUnavailable: 'La selección de idioma no está disponible actualmente. Por favor, actualice la página.',
+        languageUnavailable: 'La selección de idioma no está disponible en este momento. Actualiza la página.',
         languageNotSupported: 'Este idioma no es compatible.',
-        switchError: 'No se puede cambiar de idioma. Por favor, inténtelo de nuevo.'
+        switchError: 'No se pudo cambiar el idioma. Inténtalo de nuevo.'
     }
 };
 
@@ -56,7 +56,9 @@ function changeLanguage(targetLanguage) {
         announcement.setAttribute('role', 'status');
         announcement.setAttribute('aria-live', 'polite');
         announcement.className = 'sr-only';
-        announcement.textContent = `Changing language to ${targetLanguage === 'en-US' ? 'English' : 'Spanish'}`;
+        announcement.textContent = targetLanguage === 'es-MX'
+        ? 'Cambiando el idioma a español'
+        : 'Changing language to English';
         document.body.appendChild(announcement);
         
         // Navigate to the other language version
